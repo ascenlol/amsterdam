@@ -5,7 +5,7 @@ USE kradziezrower;
 Create  table uzytkownicy(
     ID int PRIMARY KEY AUTO_INCREMENT,
     login varchar(50),
-    haslo varchar(50),
+    haslo varchar(255),
     email varchar(50),
     adres varchar(50),
     kod_pocztowy varchar(50),
