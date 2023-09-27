@@ -12,7 +12,7 @@ Create  table uzytkownicy(
     telefon int(20),
 	admin boolean);
 
-CREATE TABLE kategrie(
+CREATE TABLE kategorie(
     ID int PRIMARY KEY AUTO_INCREMENT,
     nazwa varchar(50));
     
