@@ -5,30 +5,37 @@ $username = "root";
 $password = "";
 $dbname = "kradziezrower";
 
-// Create a database connection
-$conn = new mysqli($host, $username, $password, $dbname);
+try {
+    // Create a PDO instance
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // Set PDO to throw exceptions on error
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Retrieve data from the form
+    $login = $_POST['login'];
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+
+    // Generate a random salt
+    $salt = base64_encode(random_bytes(16)); // You can also use other methods to generate a salt
+
+    // Create a hashed password using bcrypt
+    $hashedPass = crypt($pass, '$2a$12$' . $salt . '$');
+
+    // Insert data into the database using prepared statements
+    $sql = "INSERT INTO uzytkownicy (login, email, haslo) VALUES (:login, :email, :password)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':login', $login);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $hashedPass); // Store the hashed password
+
+    if ($stmt->execute()) {
+        echo "Registration successful!";
+    } else {
+        echo "Error: " . $stmt->errorInfo()[2];
+    }
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
 }
-
-// Retrieve data from the form
-$login = $_POST['login'];
-$email = $_POST['email'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-// Insert data into the database
-$sql = "INSERT INTO uzytkownicy (login, email, haslo) VALUES (?, ?, ?)";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $login, $email, $password);
-
-if ($stmt->execute()) {
-    echo "Registration successful!";
-} else {
-    echo "Error: " . $stmt->error;
-}
-
-$stmt->close();
-$conn->close();
 ?>
