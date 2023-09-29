@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+html,body{
+    background-image: url(bg.jpg);
+    font-family: 'Poppins', sans-serif;
+}
+::selection{
+    color: #fff;
+    background-image: url(bg.jpg);
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.container .form{
+    background-image: url(bg2.jpg);
+    background-size: cover;
+    padding: 23px 35px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container .form form .form-control{
+    height: 40px;
+    font-size: 15px;
+}
+.container .form form .forget-pass{
+    margin: -15px 0 15px 0;
+}
+.container .form form .forget-pass a{
+   font-size: 15px;
+}
+.container .form form .button{
+    background-image: url(bg.jpg);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.container .form form .button:hover{
+    background-image: url(bg.jpg);
+}
+.container .form form .link{
+    padding: 5px 0;
+}
+.container .form form .link a{
+    background-image: url(bg.jpg);
+}
+.container .login-form form p{
+    font-size: 14px;
+}
+.container .row .alert{
+    font-size: 14px;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #aa046a;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.tytul {
+    font-weight: bold;
+    font-family: “Comic Sans MS”, “Comic Sans”, cursive;
+    font-size: large;
+    text-align: center;
+    background-color: #e22d81;
+    margin: 10pt 42%;
+    padding-top: 10pt;
+    padding-right: 10pt;
+    padding-left: 10pt;
+    display: inline-block;
+    border-radius: 30px;
+    border: 2pt solid rgb(0, 204, 255);
+}
+.przycisk {
+    float: left;
+}
+.anuluj {
+    float: right;
+}
